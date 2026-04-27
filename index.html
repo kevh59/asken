@@ -5,18 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASKEN | Official Store</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --red: #ff0000;
             --black: #000000;
-            --dark-grey: #111111;
+            --dark-grey: #0d0d0d;
             --white: #ffffff;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--black); color: var(--white); font-family: 'Inter', sans-serif; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        /* Navbar Merah */
+        html {
+            scroll-behavior: smooth; /* Biar kalau diklik menunya halamannya geser halus */
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- MENU BAR MERAH (FIXED) --- */
         .navbar {
             background-color: var(--red);
             padding: 15px 10%;
@@ -26,16 +41,48 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
-        .logo { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; color: var(--white); text-decoration: none; }
 
-        /* Hero Section - Background dari file lokal (Gambar Blob yang lu download) */
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            color: var(--white);
+            letter-spacing: 2px;
+            text-decoration: none;
+            font-weight: 900;
+        }
+
+        /* Ini bagian menu yang tadinya hilang */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--black); /* Warna teks jadi hitam kalau di-hover */
+        }
+
+        /* --- HERO SECTION - BACKGROUND GAMBAR DARI CANVA --- */
         .hero {
             height: 100vh;
             width: 100%;
-            /* Fallback background warna merah tua biar tulisan kelihatan kalau gambar gagal load */
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('assets/bg-home.jpg'); 
+            /* Warna cadangan merah tua kalau gambar gagal dimuat */
+            background-color: #330000; 
+            /* Direct link gambar Canva */
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
+                              url('https://api.canva.com/https%3A%2F%2Fmedia-private.canva.com%2FMADr1m_oXkY%2F1%2Fscreen.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWF6Q5L2FDP6PHOQ%2F20260427%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260427T124728Z&X-Amz-Expires=86400&X-Amz-Signature=b0e27a7c18b62846f481c4021271607a7e37e95155700728c4608c2a937a3461&X-Amz-SignedHeaders=host');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -43,69 +90,193 @@
             justify-content: center;
             text-align: center;
         }
-        .hero-content { background: rgba(255, 255, 255, 0.85); padding: 40px 60px; border-radius: 4px; }
-        .hero-title { font-family: 'Montserrat', sans-serif; font-size: 6rem; color: var(--black); line-height: 1; }
-        .hero-slogan { font-size: 1.5rem; color: var(--black); font-weight: 900; letter-spacing: 5px; text-transform: uppercase; margin-top: 10px; }
 
-        /* Product Section */
-        .products { padding: 80px 10%; }
-        .label { color: var(--red); font-family: 'Montserrat', sans-serif; font-size: 2.5rem; margin-bottom: 50px; text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { background: var(--dark-grey); border: 2px solid var(--red); padding: 25px; text-align: center; transition: 0.3s; }
-        .card:hover { transform: translateY(-10px); }
-        .card-img { width: 100%; aspect-ratio: 1/1; background: #000; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .card-img img { width: 100%; object-fit: contain; }
-        .price { color: var(--red); font-weight: bold; font-size: 1.5rem; margin-bottom: 20px; }
-        .btn { width: 100%; padding: 15px; background: var(--red); border: none; color: white; font-weight: bold; cursor: pointer; text-transform: uppercase; }
+        .hero-content {
+            padding: 20px;
+        }
 
-        /* Footer Merah */
-        footer { background: var(--red); color: var(--black); text-align: center; padding: 40px; font-weight: bold; margin-top: 50px; }
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(3rem, 12vw, 9rem);
+            color: var(--red);
+            line-height: 1;
+            text-transform: uppercase;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .hero-slogan {
+            font-size: clamp(0.9rem, 2.5vw, 1.8rem);
+            color: var(--white);
+            font-weight: 700;
+            letter-spacing: 12px;
+            margin-top: 15px;
+            text-transform: uppercase;
+            display: inline-block;
+            background-color: var(--black); /* Kotak hitam di belakang slogan */
+            padding: 8px 25px;
+            margin-left: 12px; /* Koreksi posisi karena letter-spacing */
+        }
+
+        /* --- PRODUCT SECTION --- */
+        .products {
+            padding: 100px 10%;
+            background-color: var(--black);
+        }
+
+        .section-label {
+            color: var(--red);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 60px;
+            text-align: center;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
+        }
+
+        .card {
+            background: var(--dark-grey);
+            border: 1px solid #222;
+            padding: 30px;
+            text-align: center;
+            transition: 0.4s ease-out;
+        }
+
+        .card:hover {
+            border-color: var(--red);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(255,0,0,0.1);
+        }
+
+        .card-img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            margin-bottom: 25px;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            transition: 0.6s ease;
+            object-fit: contain;
+        }
+
+        .card:hover img {
+            transform: scale(1.1) rotate(-3deg);
+        }
+
+        .card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price {
+            color: var(--red);
+            font-weight: bold;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--red);
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.3s;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: #b30000;
+            letter-spacing: 3px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--red);
+            color: var(--black);
+            text-align: center;
+            padding: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-top: 50px;
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 5%; }
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 0.8rem; }
+            .hero-slogan { letter-spacing: 5px; }
+            .section-label { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
+    <header class="navbar">
         <a href="#" class="logo">ASKEN</a>
-        <div style="font-weight: bold;">STORE</div>
-    </nav>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">HOME</a></li>
+                <li><a href="#shop">PRODUCTS</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <header class="hero">
+    <section class="hero">
         <div class="hero-content">
             <h1 class="hero-title">ASKEN</h1>
             <p class="hero-slogan">ASKEN HELPS YOU FLY</p>
         </div>
-    </header>
+    </section>
 
-    <section class="products">
-        <h2 class="label">EXCLUSIVE COLLECTION</h2>
+    <section id="shop" class="products">
+        <h2 class="section-label">NEW DROPS</h2>
         <div class="grid">
             
             <div class="card">
-                <div class="card-img"><img src="https://th.bing.com/th/id/OIP.lqbG_Kme4ugIrCACebVLfgHaHa?w=187&h=187&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="P1"></div>
-                <h3>ASKEN V1 RED</h3>
-                <p class="price">1.099.000Rp</p>
-                <button class="btn">BELI SEKARANG</button>
+                <div class="card-img">
+                    <img src="https://th.bing.com/th/id/OIP.4PWVtakAh0XnLk2xl-F7wQHaHa?w=187&h=187&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Produk ASKEN 1">
+                </div>
+                <h3>VORTEX ELITE X1</h3>
+                <p class="price">Rp 1.099.000</p>
+                <button class="btn">Add to Cart</button>
             </div>
 
             <div class="card">
-                <div class="card-img"><img src="https://th.bing.com/th/id/OIP.4PWVtakAh0XnLk2xl-F7wQHaHa?w=187&h=187&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="P2"></div>
-                <h3>ASKEN V2 BLACK</h3>
-                <p class="price">1.099.000Rp</p>
-                <button class="btn">BELI SEKARANG</button>
-            </div>
-
-            <div class="card">
-                <div class="card-img"><img src="https://th.bing.com/th/id/OIP.b-Bpkecf4vUcp363KbkuEQHaHa?w=187&h=187&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="P3"></div>
-                <h3>ASKEN PRO PHANTOM</h3>
-                <p class="price">1.999.000Rp</p>
-                <button class="btn">BELI SEKARANG</button>
+                <div class="card-img">
+                    <img src="https://th.bing.com/th/id/OIP.b-Bpkecf4vUcp363KbkuEQHaHa?w=187&h=187&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Produk ASKEN 2">
+                </div>
+                <h3>PHANTOM STRIKE PRO</h3>
+                <p class="price">Rp 1.999.899</p>
+                <button class="btn">Add to Cart</button>
             </div>
 
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 ASKEN BRAND - FLY BEYOND LIMITS</p>
+        <p>&copy; 2026 ASKEN BRAND. ENGINEERED FOR SPEED & STYLE.</p>
     </footer>
 
 </body>
