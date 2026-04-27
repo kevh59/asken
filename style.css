@@ -1,8 +1,10 @@
 body {
   margin: 0;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
 }
 
+/* HEADER */
 header {
   display: flex;
   justify-content: space-between;
@@ -11,45 +13,49 @@ header {
   color: white;
 }
 
-header a {
+nav a {
   color: white;
   margin-left: 15px;
   text-decoration: none;
 }
 
+/* HOME */
 .hero {
   text-align: center;
-  padding: 80px;
-  background: #f2f2f2;
-}
-
-.hero button {
-  padding: 10px 20px;
-  background: black;
+  padding: 160px 20px;
   color: white;
-  border: none;
-  cursor: pointer;
+
+  background-image: url("images/home.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
+/* PRODUK */
 .produk {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  padding: 40px;
+  gap: 30px;
+  padding: 50px;
 }
 
 .card {
-  width: 200px;
+  width: 220px;
   text-align: center;
+  transition: 0.3s;
 }
 
 .card img {
   width: 100%;
+  border-radius: 10px;
 }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  background: black;
-  color: white;
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* HARGA */
+.harga {
+  color: green;
+  font-weight: bold;
+  font-size: 18px;
 }
