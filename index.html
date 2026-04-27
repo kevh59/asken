@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASKEN | Beyond Performance</title>
+    <title>ASKEN Official Store</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --red: #ff0000;
             --black: #000000;
-            --dark-grey: #0d0d0d;
             --white: #ffffff;
+            --dark-card: #111111;
         }
 
         * {
@@ -27,13 +27,14 @@
             overflow-x: hidden;
         }
 
-        /* Navigasi */
+        /* Menu Bar Merah */
         .navbar {
             background-color: var(--red);
-            padding: 15px 10%;
+            height: 70px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 10%;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -43,32 +44,28 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 1.8rem;
             color: var(--white);
-            letter-spacing: 2px;
+            text-decoration: none;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 30px;
+            gap: 20px;
         }
 
         .nav-links a {
-            text-decoration: none;
             color: var(--white);
+            text-decoration: none;
             font-weight: bold;
+            text-transform: uppercase;
             font-size: 0.9rem;
-            transition: 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--black);
-        }
-
-        /* Hero Section - Background Gambar 1 */
-        .hero {
+        /* Home Section - Gambar 1 sebagai BG */
+        .home-hero {
             height: 100vh;
             width: 100%;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+            background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), 
                         url('https://th.bing.com/th/id/OIP.lqbG_Kme4ugIrCACebVLfgHaHa?w=187&h=187&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3');
             background-size: cover;
             background-position: center;
@@ -78,103 +75,158 @@
             text-align: center;
         }
 
-        .hero-content {
-            padding: 20px;
+        .hero-text-box {
+            padding: 40px;
+            /* Kita kasih background tipis biar tulisan hitam lu tetep kebaca walau BG-nya gelap */
+            background: rgba(255, 255, 255, 0.7); 
+            border-radius: 2px;
         }
 
         .hero-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(3rem, 10vw, 8rem);
-            color: var(--red);
+            font-size: clamp(3rem, 10vw, 6rem);
+            color: var(--black); /* Tulisan di Home Warna Hitam */
             line-height: 1;
-            text-transform: uppercase;
         }
 
         .hero-slogan {
-            font-size: clamp(0.8rem, 2vw, 1.5rem);
-            color: var(--white);
-            font-weight: 700;
-            letter-spacing: 10px;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            color: var(--black); /* Slogan Warna Hitam */
+            font-weight: 900;
+            letter-spacing: 5px;
             margin-top: 10px;
             text-transform: uppercase;
-            /* Sesuai request: Hitam agar kontras jika tanpa overlay, 
-               tapi di sini gue kasih putih agar terbaca di atas background gelap */
-            background-color: var(--black);
-            display: inline-block;
-            padding: 5px 15px;
         }
 
-        /* Product Section */
-        .products {
+        /* Produk Section */
+        .product-section {
             padding: 80px 10%;
+            background-color: var(--black);
         }
 
-        .section-label {
+        .section-title {
             color: var(--red);
             font-family: 'Montserrat', sans-serif;
+            text-align: center;
             font-size: 2.5rem;
             margin-bottom: 50px;
-            text-align: center;
-            letter-spacing: 3px;
         }
 
-        .grid {
+        .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
-        .card {
-            background: var(--dark-grey);
-            border: 1px solid #222;
-            padding: 30px;
+        .product-card {
+            background-color: var(--dark-card);
+            border: 2px solid var(--red); /* Border Merah */
+            padding: 20px;
             text-align: center;
-            transition: 0.4s;
-            position: relative;
+            transition: transform 0.3s;
         }
 
-        .card:hover {
-            border-color: var(--red);
+        .product-card:hover {
             transform: translateY(-10px);
         }
 
-        .card-img {
+        .product-card img {
             width: 100%;
-            aspect-ratio: 1 / 1;
-            margin-bottom: 25px;
-            overflow: hidden;
-            background: #111;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            aspect-ratio: 1/1;
+            object-fit: contain;
+            margin-bottom: 20px;
         }
 
-        .card-img img {
-            width: 100%;
-            transition: 0.5s;
-        }
-
-        .card:hover img {
-            transform: scale(1.1);
-        }
-
-        .card h3 {
+        .product-card h3 {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.2rem;
             margin-bottom: 10px;
         }
 
         .price {
             color: var(--red);
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 20px;
         }
 
-        .btn {
-            width: 100%;
-            padding: 15px;
-            background: var(--red);
-            color: white;
+        .buy-btn {
+            background-color: var(--red);
+            color: var(--white);
             border: none;
-            font-weight:
+            padding: 12px 25px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .buy-btn:hover {
+            background-color: #cc0000;
+        }
+
+        /* Footer Merah */
+        .footer {
+            background-color: var(--red);
+            color: var(--black);
+            padding: 40px 10%;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar { padding: 0 5%; }
+            .hero-title { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="logo">ASKEN</a>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#produk">Products</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="home-hero">
+        <div class="hero-text-box">
+            <h1 class="hero-title">ASKEN</h1>
+            <p class="hero-slogan">ASKEN HELPS YOU FLY</p>
+        </div>
+    </header>
+
+    <section id="produk" class="product-section">
+        <h2 class="section-title">EXCLUSIVE DROPS</h2>
+        <div class="product-grid">
+            
+            <div class="product-card">
+                <img src="https://th.bing.com/th/id/OIP.4PWVtakAh0XnLk2xl-F7wQHaHa?w=187&h=187&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Produk 1">
+                <h3>VORTEX MID</h3>
+                <p class="price">1.099.000Rp</p>
+                <button class="buy-btn">BELI SEKARANG</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://th.bing.com/th/id/OIP.b-Bpkecf4vUcp363KbkuEQHaHa?w=187&h=187&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Produk 2">
+                <h3>VORTEX PRO</h3>
+                <p class="price">1.999.899Rp</p>
+                <button class="buy-btn">BELI SEKARANG</button>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 ASKEN BRAND. All Rights Reserved.</p>
+        <p>FOLLOW US ON INSTAGRAM @ASKEN.FLY</p>
+    </footer>
+
+</body>
+</html>
