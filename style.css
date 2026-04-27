@@ -1,15 +1,14 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  scroll-behavior: smooth;
 }
 
-/* HEADER */
+/* NAVBAR MERAH */
 header {
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  background: black;
+  background: red;
   color: white;
 }
 
@@ -19,29 +18,42 @@ nav a {
   text-decoration: none;
 }
 
-/* HOME */
+/* HOME BACKGROUND */
 .hero {
+  height: 400px; /* cocok untuk 16:4 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 160px 20px;
-  color: white;
 
   background-image: url("images/home.jpg");
   background-size: cover;
   background-position: center;
 }
 
-/* PRODUK */
+/* TEKS HOME (WARNA HITAM SESUAI REQUEST) */
+.hero h2 {
+  color: black;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+/* PRODUK AREA */
 .produk {
   display: flex;
   justify-content: center;
-  gap: 30px;
-  padding: 50px;
+  gap: 40px;
+  padding: 60px;
+  background: black;
 }
 
+/* CARD PRODUK */
 .card {
-  width: 220px;
   text-align: center;
-  transition: 0.3s;
+  width: 220px;
+  background: red;
+  padding: 15px;
+  border-radius: 10px;
 }
 
 .card img {
@@ -49,13 +61,20 @@ nav a {
   border-radius: 10px;
 }
 
-.card:hover {
-  transform: scale(1.05);
+.card h3 {
+  color: white;
 }
 
-/* HARGA */
 .harga {
-  color: green;
+  color: black;
   font-weight: bold;
   font-size: 18px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: red;
+  color: white;
 }
