@@ -3,58 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASKEN - Official Store</title>
-    <link rel="stylesheet" href="style.css">
+    <title>ASKEN | Official Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --red: #ff0000;
+            --black: #000000;
+            --dark-grey: #0a0a0a;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Menu Bar Warna Merah */
+        .navbar {
+            background-color: var(--red);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: var(--white);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--black); }
+
+        /* Home Section 16:4 */
+        .hero {
+            width: 100%;
+            position: relative;
+        }
+
+        .hero-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 4;
+            overflow: hidden;
+            background-color: #111;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8);
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7vw;
+            color: var(--black); /* Tulisan ASKEN Hitam */
+            line-height: 1;
+            margin-bottom: 0px;
+        }
+
+        .hero-slogan {
+            font-size: 1.8vw;
+            color: var(--black); /* Slogan Hitam */
+            font-weight: 900;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+        }
+
+        /* Produk Section Merah-Hitam */
+        .products { padding: 80px 8%; }
+
+        .section-label {
+            color: var(--red);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            border-left: 6px solid var(--red);
+            padding-left: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background: var(--dark-grey);
+            border: 1px solid #222;
+            padding: 20px;
+            transition: 0.4s;
+            text-align: center;
+        }
+
+        .card:hover {
+            border-color: var(--red);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255,0,0,0.1);
+        }
+
+        .card-img {
+            width: 100%;
+            aspect-ratio: 1 / 1; /* Format 1:1 PNG */
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 90%;
+            transition: 0.5s;
+            object-fit: contain;
+        }
+
+        .card:hover img { transform: scale(1.1) rotate(-5deg); }
+
+        .card-info h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .price {
+            color: var(--red);
+            font-weight: bold;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--red);
+            border: none;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover { background: #cc0000; }
+
+        /* Footer */
+        .footer {
+            background: var(--red);
+            padding: 40px 8%;
+            text-align: center;
+            color: var(--black);
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-slogan { letter-spacing: 3px; }
+            .navbar { padding: 15px 5%; }
+        }
+    </style>
 </head>
 <body>
 
-    <nav class="navbar">
+    <header class="navbar">
         <div class="logo">ASKEN</div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#produk">Produk</a></li>
-            <li><a href="#">Kontak</a></li>
-        </ul>
-    </nav>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#shop">SHOP</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <section id="home" class="home-section">
-        <div class="hero-image-container">
-            <img src="hero-16x4.jpg" alt="ASKEN Hero Banner" class="hero-img">
-            <div class="hero-text">
-                <h1>ASKEN</h1>
-                <p class="slogan">ASKEN HELPS YOU FLY</p>
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <img src="https://chatgpt.com/backend-api/estuary/content?id=file_00000000cdf471faa8cd0b979541cc7e" alt="ASKEN Banner" class="hero-img">
+            <div class="hero-content">
+                <h1 class="hero-title">ASKEN</h1>
+                <p class="hero-slogan">ASKEN HELPS YOU FLY</p>
             </div>
         </div>
     </section>
 
-    <section id="produk" class="product-section">
-        <h2 class="section-title">Koleksi Produk</h2>
-        <div class="product-grid">
+    <section id="shop" class="products">
+        <h2 class="section-label">NEW ARRIVAL</h2>
+        <div class="grid">
             
-            <div class="product-card">
-                <div class="img-box">
-                    <img src="produk1.png" alt="Sepatu Asken 1">
-                </div>
-                <h3>ASKEN Vortex Black</h3>
-                <p class="price">Rp 1.099.000</p>
-                <button class="buy-btn">Beli Sekarang</button>
-            </div>
-
-            <div class="product-card">
-                <div class="img-box">
-                    <img src="produk2.png" alt="Sepatu Asken 2">
-                </div>
-                <h3>ASKEN Vortex Pro</h3>
-                <p class="price">Rp 1.999.899</p>
-                <button class="buy-btn">Beli Sekarang</button>
-            </div>
-
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 ASKEN Brand. All Rights Reserved.</p>
-    </footer>
-
-</body>
-</html>
+            <div class="card">
+                <div class="card-img">
+                    <img src="
