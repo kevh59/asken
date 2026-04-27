@@ -3,31 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASKEN | Beyond Performance</title>
+    <title>ASKEN | Official Store</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    
     <style>
         :root {
             --red: #ff0000;
             --black: #000000;
-            --dark-grey: #0d0d0d;
+            --dark-grey: #111111;
             --white: #ffffff;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--black); color: var(--white); font-family: 'Inter', sans-serif; }
 
-        body {
-            background-color: var(--black);
-            color: var(--white);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-
-        /* Navigasi */
+        /* Navbar Merah */
         .navbar {
             background-color: var(--red);
             padding: 15px 10%;
@@ -38,38 +27,15 @@
             top: 0;
             z-index: 1000;
         }
+        .logo { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; color: var(--white); text-decoration: none; }
 
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.8rem;
-            color: var(--white);
-            letter-spacing: 2px;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--white);
-            font-weight: bold;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--black);
-        }
-
-        /* Hero Section - Background Gambar 1 */
+        /* Hero Section - Background dari file lokal (Gambar Blob yang lu download) */
         .hero {
             height: 100vh;
             width: 100%;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://th.bing.com/th/id/OIP.lqbG_Kme4ugIrCACebVLfgHaHa?w=187&h=187&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3');
+            /* Fallback background warna merah tua biar tulisan kelihatan kalau gambar gagal load */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('assets/bg-home.jpg'); 
             background-size: cover;
             background-position: center;
             display: flex;
@@ -77,182 +43,69 @@
             justify-content: center;
             text-align: center;
         }
-
-        .hero-content {
-            padding: 20px;
-        }
-
-        .hero-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(3rem, 10vw, 8rem);
-            color: var(--red);
-            line-height: 1;
-            text-transform: uppercase;
-        }
-
-        .hero-slogan {
-            font-size: clamp(0.8rem, 2vw, 1.5rem);
-            color: var(--white);
-            font-weight: 700;
-            letter-spacing: 10px;
-            margin-top: 10px;
-            text-transform: uppercase;
-            /* Sesuai request: Hitam agar kontras jika tanpa overlay, 
-               tapi di sini gue kasih putih agar terbaca di atas background gelap */
-            background-color: var(--black);
-            display: inline-block;
-            padding: 5px 15px;
-        }
+        .hero-content { background: rgba(255, 255, 255, 0.85); padding: 40px 60px; border-radius: 4px; }
+        .hero-title { font-family: 'Montserrat', sans-serif; font-size: 6rem; color: var(--black); line-height: 1; }
+        .hero-slogan { font-size: 1.5rem; color: var(--black); font-weight: 900; letter-spacing: 5px; text-transform: uppercase; margin-top: 10px; }
 
         /* Product Section */
-        .products {
-            padding: 80px 10%;
-        }
+        .products { padding: 80px 10%; }
+        .label { color: var(--red); font-family: 'Montserrat', sans-serif; font-size: 2.5rem; margin-bottom: 50px; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: var(--dark-grey); border: 2px solid var(--red); padding: 25px; text-align: center; transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); }
+        .card-img { width: 100%; aspect-ratio: 1/1; background: #000; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .card-img img { width: 100%; object-fit: contain; }
+        .price { color: var(--red); font-weight: bold; font-size: 1.5rem; margin-bottom: 20px; }
+        .btn { width: 100%; padding: 15px; background: var(--red); border: none; color: white; font-weight: bold; cursor: pointer; text-transform: uppercase; }
 
-        .section-label {
-            color: var(--red);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            text-align: center;
-            letter-spacing: 3px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .card {
-            background: var(--dark-grey);
-            border: 1px solid #222;
-            padding: 30px;
-            text-align: center;
-            transition: 0.4s;
-            position: relative;
-        }
-
-        .card:hover {
-            border-color: var(--red);
-            transform: translateY(-10px);
-        }
-
-        .card-img {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            margin-bottom: 25px;
-            overflow: hidden;
-            background: #111;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .card-img img {
-            width: 100%;
-            transition: 0.5s;
-        }
-
-        .card:hover img {
-            transform: scale(1.1);
-        }
-
-        .card h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .price {
-            color: var(--red);
-            font-weight: bold;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 15px;
-            background: var(--red);
-            color: white;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            background: #b30000;
-            letter-spacing: 2px;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--red);
-            color: var(--black);
-            text-align: center;
-            padding: 40px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-
-        /* Responsive Mobile */
-        @media (max-width: 768px) {
-            .hero-slogan { letter-spacing: 3px; }
-            .navbar { padding: 15px 5%; }
-        }
+        /* Footer Merah */
+        footer { background: var(--red); color: var(--black); text-align: center; padding: 40px; font-weight: bold; margin-top: 50px; }
     </style>
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="logo">ASKEN</div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#">HOME</a></li>
-                <li><a href="#shop">SHOP</a></li>
-                <li><a href="#">CONTACT</a></li>
-            </ul>
-        </nav>
-    </header>
+    <nav class="navbar">
+        <a href="#" class="logo">ASKEN</a>
+        <div style="font-weight: bold;">STORE</div>
+    </nav>
 
-    <section class="hero">
+    <header class="hero">
         <div class="hero-content">
             <h1 class="hero-title">ASKEN</h1>
             <p class="hero-slogan">ASKEN HELPS YOU FLY</p>
         </div>
-    </section>
+    </header>
 
-    <section id="shop" class="products">
-        <h2 class="section-label">NEW ARRIVALS</h2>
+    <section class="products">
+        <h2 class="label">EXCLUSIVE COLLECTION</h2>
         <div class="grid">
             
             <div class="card">
-                <div class="card-img">
-                    <img src="https://th.bing.com/th/id/OIP.4PWVtakAh0XnLk2xl-F7wQHaHa?w=187&h=187&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Produk ASKEN 1">
-                </div>
-                <h3>VORTEX ELITE X1</h3>
-                <p class="price">Rp 1.099.000</p>
-                <button class="btn">Add to Cart</button>
+                <div class="card-img"><img src="https://th.bing.com/th/id/OIP.lqbG_Kme4ugIrCACebVLfgHaHa?w=187&h=187&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="P1"></div>
+                <h3>ASKEN V1 RED</h3>
+                <p class="price">1.099.000Rp</p>
+                <button class="btn">BELI SEKARANG</button>
             </div>
 
             <div class="card">
-                <div class="card-img">
-                    <img src="https://th.bing.com/th/id/OIP.b-Bpkecf4vUcp363KbkuEQHaHa?w=187&h=187&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Produk ASKEN 2">
-                </div>
-                <h3>PHANTOM STRIKE PRO</h3>
-                <p class="price">Rp 1.999.899</p>
-                <button class="btn">Add to Cart</button>
+                <div class="card-img"><img src="https://th.bing.com/th/id/OIP.4PWVtakAh0XnLk2xl-F7wQHaHa?w=187&h=187&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="P2"></div>
+                <h3>ASKEN V2 BLACK</h3>
+                <p class="price">1.099.000Rp</p>
+                <button class="btn">BELI SEKARANG</button>
+            </div>
+
+            <div class="card">
+                <div class="card-img"><img src="https://th.bing.com/th/id/OIP.b-Bpkecf4vUcp363KbkuEQHaHa?w=187&h=187&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="P3"></div>
+                <h3>ASKEN PRO PHANTOM</h3>
+                <p class="price">1.999.000Rp</p>
+                <button class="btn">BELI SEKARANG</button>
             </div>
 
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 ASKEN BRAND. ENGINEERED FOR SPEED & STYLE.</p>
+        <p>&copy; 2026 ASKEN BRAND - FLY BEYOND LIMITS</p>
     </footer>
 
 </body>
